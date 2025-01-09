@@ -1,0 +1,12 @@
+annual-lottery/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js
+│   └── lottery.js
+├── data/
+│   └── employees.json
+└── assets/
+    ├── background.jpg
+    └── lottery-bg.png 

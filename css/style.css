@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #f0f2f5; /* 改回普通背景色 */
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #333; /* 改回深色标题 */
+    text-shadow: none;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.lottery-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prize-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.draw-count-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.draw-count-label {
+    margin-right: 5px;
+    color: #333;
+}
+
+#drawCount {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#prizeSelect {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.display-area {
+    background-color: #f8f9fa;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 20px;
+    word-break: break-all;
+    line-height: 1.2;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #1890ff;
+    color: white;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.winner-list {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+#winnersList {
+    margin-top: 20px;
+}
+
+.winner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#clearBtn {
+    background-color: #ff4d4f;
+    font-size: 14px;
+    padding: 5px 15px;
+}
+
+#clearBtn:hover {
+    background-color: #ff7875;
+}
+
+.number-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#numberToDraw {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* 添加模态框样式 */
+.confirm-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    animation: modalShow 0.3s ease;
+    min-width: 320px;
+}
+
+.confirm-modal h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.confirm-modal p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.confirm-modal .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-modal button {
+    padding: 8px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.confirm-modal .cancel-btn {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.confirm-modal .cancel-btn:hover {
+    background: #e0e0e0;
+}
+
+.confirm-modal .confirm-btn {
+    background: #ff4d4f;
+    color: white;
+}
+
+.confirm-modal .confirm-btn:hover {
+    background: #ff7875;
+}
+
+/* 美化提示框样式 */
+.alert-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    animation: alertShow 0.3s ease;
+}
+
+.alert-modal p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.alert-modal button {
+    background: #1890ff;
+    color: white;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.alert-modal button:hover {
+    background: #40a9ff;
+}
+
+@keyframes alertShow {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* 添加遮罩层 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: overlayShow 0.3s ease;
+}
+
+@keyframes overlayShow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 添加移动端适配样式 */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    header h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .lottery-box {
+        padding: 15px;
+    }
+
+    /* 调整选择区域布局 */
+    .prize-select {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #prizeSelect {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .draw-count-wrapper {
+        width: 100%;
+    }
+
+    #drawCount {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    /* 调整显示区域 */
+    .display-area {
+        height: 150px;
+        font-size: 32px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* 调整按钮样式 */
+    .control-buttons button {
+        padding: 8px 20px;
+        font-size: 16px;
+    }
+
+    /* 调整中奖名单显示 */
+    .winner-list {
+        padding: 15px;
+    }
+
+    .winner-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .winner-header h2 {
+        font-size: 20px;
+    }
+
+    #winnersList {
+        font-size: 14px;
+    }
+
+    /* 调整弹窗样式 */
+    .confirm-modal, .alert-modal {
+        width: 90%;
+        padding: 20px;
+        min-width: auto;
+    }
+
+    .confirm-modal .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .confirm-modal button, .alert-modal button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* 添加横屏适配 */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .container {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .display-area {
+        height: 100px;
+    }
+} 
