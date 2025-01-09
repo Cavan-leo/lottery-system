@@ -1,14 +1,48 @@
 class Lottery {
     constructor() {
         this.employees = [
-            {"id": "001", "name": "张三"},
-            {"id": "002", "name": "李四"},
-            {"id": "003", "name": "王五"},
-            {"id": "004", "name": "赵六"},
-            {"id": "005", "name": "钱七"},
-            {"id": "006", "name": "孙八"},
-            {"id": "007", "name": "周九"},
-            {"id": "008", "name": "吴十"}
+            {"id": "001", "name": "卞氡羑"},
+            {"id": "002", "name": "姜晴霞"},
+            {"id": "003", "name": "杜啸"},
+            {"id": "004", "name": "李明慧"},
+            {"id": "005", "name": "谭喆文"},
+            {"id": "006", "name": "孙骏"},
+            {"id": "007", "name": "童欣"},
+            {"id": "008", "name": "张以红"},
+            {"id": "009", "name": "杨坤"},
+            {"id": "010", "name": "张蕾"},
+            {"id": "011", "name": "王蕊"},
+            {"id": "012", "name": "伋蓉"},
+            {"id": "013", "name": "章晶晶"},
+            {"id": "014", "name": "苗蓝方"},
+            {"id": "015", "name": "丁雅文"},
+            {"id": "016", "name": "袁搏"},
+            {"id": "017", "name": "高雨晴"},
+            {"id": "018", "name": "张娟"},
+            {"id": "019", "name": "姜进林"},
+            {"id": "020", "name": "于通"},
+            {"id": "021", "name": "刘雨平"},
+            {"id": "022", "name": "刘颖"},
+            {"id": "023", "name": "李虎"},
+            {"id": "024", "name": "黄春草"},
+            {"id": "025", "name": "方萌萌"},
+            {"id": "026", "name": "刘玲"},
+            {"id": "027", "name": "申智强"},
+            {"id": "028", "name": "查淑芬"},
+            {"id": "029", "name": "李天昊"},
+            {"id": "030", "name": "姜涛"},
+            {"id": "031", "name": "柳程"},
+            {"id": "032", "name": "孙志钢"},
+            {"id": "033", "name": "朱珍珍"},
+            {"id": "034", "name": "孙敏"},
+            {"id": "035", "name": "李庆普"},
+            {"id": "036", "name": "陈新波"},
+            {"id": "037", "name": "刘旭润"},
+            {"id": "038", "name": "高雯雯"},
+            {"id": "039", "name": "赵红玲"},
+            {"id": "040", "name": "唐震"},
+            {"id": "041", "name": "毛艳霞"},
+            {"id": "042", "name": "徐海敬"}
         ];
         const savedWinners = JSON.parse(localStorage.getItem('winners') || '[]');
         this.winners = new Set(savedWinners);
@@ -76,11 +110,11 @@ class Lottery {
                 if (tempAvailable.length > 0) {
                     const randomIndex = Math.floor(Math.random() * tempAvailable.length);
                     randomNames.push(tempAvailable[randomIndex].name);
-                    tempAvailable.splice(randomIndex, 1); // 防止重复显示同一个名字
+                    tempAvailable.splice(randomIndex, 1);
                 }
             }
             this.nameDisplay.textContent = randomNames.join('、');
-        }, 50);
+        }, 30);
     }
 
     stopLottery() {
